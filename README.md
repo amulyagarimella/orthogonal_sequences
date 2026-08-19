@@ -15,6 +15,8 @@ where
 Use it for barcodes, spike-ins, and synthetic targets. It also extends an
 existing set, scores sequences from elsewhere, and designs 10x Flex v2 probes.
 
+h/t https://github.com/pachterlab/qcbc
+
 One file, Python 3.9+, standard library only. Requires NCBI BLAST+ (`blastn`,
 `makeblastdb`) on `PATH`.
 
