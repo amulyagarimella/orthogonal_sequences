@@ -7,18 +7,15 @@ where
 
 - **no two sequences resemble each other** — every pair differs at at least half
   its positions, and you can require more,
-- **none of them appear in a genome you care about** — nothing survives that
-  `blastn` matches to human, mouse, or any database you name,
+- **none of them appear in a genome you care about** — `blastn` removes matches to human, mouse, and any other database of choice
 - **none of them collide with a list you supply** — not equal to, contained in, or
   containing any sequence you blacklist, in either direction and on either strand.
 
-Use it for barcodes, spike-ins, and synthetic targets. It also extends an
-existing set, scores sequences from elsewhere, and designs 10x Flex v2 probes.
+Can also: extend an existing set, score sequences from elsewhere, design 10x Flex v2 probes
 
 h/t https://github.com/pachterlab/qcbc
 
-One file, Python 3.9+, standard library only. Requires NCBI BLAST+ (`blastn`,
-`makeblastdb`) on `PATH`.
+Requires NCBI BLAST+ (`blastn`,`makeblastdb`) on `PATH`.
 
 ```bash
 # 100 sequences of 100 nt that don't occur in human or mouse
@@ -42,10 +39,8 @@ genomes, off-target screening, probe design rules, troubleshooting.
 
 ---
 
-## The metrics
+## Metrics
 
-The columns of the `report` TSV, in order. Generation filters on the same
-measurements.
 
 | Column | What it is | How it's computed |
 |---|---|---|
@@ -67,7 +62,7 @@ measurements.
 | `best_ref_alnlen` | bases the hit covered | from `blastn` |
 | `sequence` | the bases | as read |
 
-### Three thresholds that trip people up
+### how to set params
 
 **`entropy3` limits depend on length.** A sequence of length *L* has *L*−2
 3-mers, capping `entropy3` at log2(*L*−2): 5.58 for a 50-mer, 4.52 for a 25 nt
